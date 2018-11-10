@@ -34,7 +34,7 @@ nbc.consolidate();
 
 app.get("/", function (req, res) {
   res.render("index", {
-    content: "Hello world"
+    content: "Kurs work"
   });
 });
 

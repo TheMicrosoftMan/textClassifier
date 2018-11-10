@@ -10,25 +10,33 @@
 </head>
 
 <body>
-    <%=content %>
-    <textarea name="textBox" id="textBox" cols="30" rows="10"></textarea>
-    <button id="exx" onclick="sendText()">Execute</button>
+
+    <main>
+        <section id="brainContainer">
+            <div class="brainContainerItems">
+                <h1>
+                    <%=content %>
+                </h1>
+                <textarea name="textBox" id="textBox"></textarea>
+                <button id="check" onclick="sendText()">Execute</button>
+                <h2 id="answer"></h2>
+            </div>
+        </section>
+        <section id="recomended">
+            <div class="rec">
+                <h2>Приклади</h2>
+                <div class="recomendedBlock">
+                    <div class="recomendedItem" onclick="toTextarea(this)">I go to my sister today</div>
+                    <div class="recomendedItem" onclick="toTextarea(this)">I am study</div>
+                    <div class="recomendedItem" onclick="toTextarea(this)">"Good morning" said Olya</div>
+                    <div class="recomendedItem" onclick="toTextarea(this)">After that the little girl go to the forest</div>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-<script>
-    var socket = io.connect();
-
-    function sendText() {
-        let text = document.getElementById("textBox").value;
-        socket.emit('text', {
-            text: text
-        });
-    }
-
-    socket.on("textStyle", function (data) {
-        alert(data.styleText);
-    })
-</script>
+<script src="./js/script.js"></script>
 
 </html>
