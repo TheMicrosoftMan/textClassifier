@@ -42,8 +42,10 @@ var io = socket(server);
 io.on('connection', function (socket) {
   console.log("connected");
   socket.on('text', function (data) {
+    let style = nbc.computeOdds(data.text);
+    console.log("Text:\n" + data.text + "\nStyle:\n" + style);
     socket.emit("textStyle", {
-      styleText: nbc.computeOdds(data.text)
+      styleText: style
     })
   });
 });
