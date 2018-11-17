@@ -10,7 +10,7 @@ let server = app.listen(app.get('port'));
 
 var socket = require('socket.io');
 
-var Classifier = require('wink-naive-bayes-text-classifier');
+var Classifier = require('./wink-naive-bayes-text-classifier');
 var nbc = Classifier();
 var nlp = require('wink-nlp-utils');
 nbc.definePrepTasks([
@@ -24,11 +24,13 @@ nbc.defineConfig({
   smoothingFactor: 0.5
 });
 
-let data = require('./training_data/tData').concat(require('./training_data/artistic_style'), require('./training_data/artistic_style'), require('./training_data/official_business_style'), require('./training_data/news_style'));
+let data = require('./training_data/ukrData').concat(require('./training_data/urk_conversational_style')).concat(require('./training_data/ukr_artistic_style')).concat(require('./training_data/ukr_science_style')).concat(require('./training_data/urk_official_business_style')).concat(require('./training_data/ukr_journalistic_style'));
 
 for (let i = 0; i < data.length; i++) {
   nbc.learn(data[i].input, data[i].output);
 }
+
+console.log("Ready");
 
 nbc.consolidate();
 
