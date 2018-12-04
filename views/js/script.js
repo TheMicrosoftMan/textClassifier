@@ -4,9 +4,16 @@ let textarea = document.getElementById("textBox");
 textarea.value = "";
 
 function sendText() {
-    socket.emit('text', {
-        text: textarea.value
-    });
+    var reg = /[а-яА-ЯіІїЇ]/g;
+    if (textarea.value.search(reg) == -1) {
+        alert("Введіть текст на українській мові");
+        textarea.value = ""
+    } else {
+
+        socket.emit('text', {
+            text: textarea.value
+        });
+    }
 }
 
 function toTextarea(e) {
