@@ -36,7 +36,7 @@ nbc.consolidate();
 
 app.get("/", function (req, res) {
   res.render("index", {
-    content: "Kurs work"
+    content: "Класифікація текстів за стилем написання"
   });
 });
 
