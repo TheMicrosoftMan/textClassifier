@@ -1,6 +1,5 @@
 let express = require("express");
 let app = express();
-// require('./routes.js')(app);
 
 app.set("view engine", "ejs");
 app.set('port', (process.env.PORT || 5000));
